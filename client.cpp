@@ -13,7 +13,6 @@
 #define CLIENT_EXIT_SYMBOL '#'
 #define BUFFER_SIZE 1024
 #define SERVER_IP "127.0.0.1"
-
 bool is_client_connection_closed(const char * msg){
     for(int i = 0; i < strlen(msg); i++){
         if(msg[i] == CLIENT_EXIT_SYMBOL){

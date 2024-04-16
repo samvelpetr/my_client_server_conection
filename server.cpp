@@ -7,12 +7,13 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <netinet/in.h>
-
+#include <stdio.h>
 
 #define DEFAULT_PORT 1604
 #define ERROR_S "SERVER ERROR"
 #define CLIENT_EXIT_SYMBOL '#'
 #define BUFFER_SIZE 1024
+
 
 
 bool is_client_connection_closed(const char * msg){
@@ -62,7 +63,7 @@ int main(int argc, char** argv){
         send(server, buffer ,BUFFER_SIZE,0);
         std::cout << "=> Server connected to client #1" << std::endl <<"Enter # to end connection";
 
-        std::cout << "\NClient: ";
+        std::cout << "\nClient: ";
         recv(server,buffer,BUFFER_SIZE,0);
         std::cout <<buffer <<std::endl;
         if(is_client_connection_closed(buffer)){
@@ -86,8 +87,12 @@ int main(int argc, char** argv){
         }
         std::cout <<"Goodbye!\n";
         isExit = false;
-        exit(1);
-            
+        close(server);
+        if(!isExit){
+            return 0;
+        }
+
     }
+
     return 0;
 } 
