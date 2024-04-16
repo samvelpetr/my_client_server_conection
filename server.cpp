@@ -69,7 +69,7 @@ int main(int argc, char** argv){
         if(is_client_connection_closed(buffer)){
             isExit = true;
             
-        }
+        }//
         while(!isExit){
             std::cout <<"Server: ";
             std::cin.getline(buffer,BUFFER_SIZE);
